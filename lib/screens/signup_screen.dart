@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:skin_cancer_detector/screens/tensorflow_screen.dart';
 
 import '../components/reausable_widget.dart';
+import '../enums/auth_result_status.dart';
+import '../services/auth_exception_handle.dart';
+import '../services/firebase_auth_helper.dart';
 import '../utils/color_utils.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -50,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Email Id", Icons.person_outline, false,
+                reusableTextField("Enter Email", Icons.person_outline, false,
                     _emailTextController),
                 const SizedBox(
                   height: 20,
@@ -60,18 +63,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                firebaseUIButton(context, "Sign Up", () {
-                  FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
-                      .then((value) {
-                    print("Created New Account");
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const TensorFlowScreen()));
-                  }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
-                  });
+                firebaseUIButton(context, "Sign Up", () async {
+                  final status = await FirebaseAuthHelper().createAccount(
+                      email: _emailTextController.text,
+                      pass: _passwordTextController.text);
+
+                  if (status == AuthResultStatus.successful) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TensorFlowScreen(),
+                      ),
+                    );
+                  } else {
+                    final errorMSG =
+                        AuthExceptionHandler.generateExceptionMessage(status);
+
+                    showAlertDialog(errorMSG, context);
+                  }
                 })
               ],
             ),

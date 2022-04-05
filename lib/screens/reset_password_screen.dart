@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../components/reausable_widget.dart';
+import '../enums/auth_result_status.dart';
+import '../services/auth_exception_handle.dart';
+import '../services/firebase_auth_helper.dart';
 import '../utils/color_utils.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -35,21 +38,34 @@ class _ResetPasswordState extends State<ResetPassword> {
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
               child: Padding(
-            padding:const EdgeInsets.fromLTRB(20, 120, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
               children: <Widget>[
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Email Id", Icons.person_outline, false,
+                reusableTextField("Enter Email", Icons.person_outline, false,
                     _emailTextController),
                 const SizedBox(
                   height: 20,
                 ),
-                firebaseUIButton(context, "Reset Password", () {
+                firebaseUIButton(context, "Reset Password", () async {
                   // FirebaseAuth.instance
                   //     .sendPasswordResetEmail(email: _emailTextController.text)
                   //     .then((value) => Navigator.of(context).pop());
+
+                  await FirebaseAuthHelper()
+                      .resetPassword(email: _emailTextController.text)
+                      .then((value) => Navigator.of(context).pop());
+
+                  // if (status == AuthResultStatus.successful) {
+                  //   Navigator.of(context).pop();
+                  // } else {
+                  //   final errorMSG =
+                  //       AuthExceptionHandler.generateExceptionMessage(status);
+
+                  //   showAlertDialog(errorMSG, context);
+                  // }
                 })
               ],
             ),

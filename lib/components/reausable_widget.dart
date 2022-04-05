@@ -66,3 +66,21 @@ Container firebaseUIButton(BuildContext context, String title, Function onTap) {
     ),
   );
 }
+
+showAlertDialog(errorMsg, context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Colors.purple.withOpacity(0.6),
+            title: const Text(
+              'Login Failed',
+              style: TextStyle(color: Colors.white),
+            ),
+            content: Text(
+              errorMsg,
+              style: const TextStyle(color: Colors.white),
+            ),
+          );
+        });
+  }
