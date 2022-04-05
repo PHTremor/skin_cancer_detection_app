@@ -1,3 +1,3 @@
-Basal Cell
-Melanoma
-Squamous Cell Carcinoma
+0 Basal Cell
+1 Squamous Cell Carcinoma
+2 Melanoma
