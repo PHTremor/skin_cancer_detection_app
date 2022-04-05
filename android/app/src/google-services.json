@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "537229414839",
+    "project_id": "signin-cancerapp",
+    "storage_bucket": "signin-cancerapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537229414839:android:78388b8a744c5382a85832",
+        "android_client_info": {
+          "package_name": "com.example.skin_cancer_detector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537229414839-4u98l90f0fe3kf76at462r5kd50ihqrb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.skin_cancer_detector",
+            "certificate_hash": "e392b7d87248407ba163eeafa516bdcbe855b691"
+          }
+        },
+        {
+          "client_id": "537229414839-j9ueu8c63bu5pp2l3bd5tg3gcc9d3ogp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDDExCQ9I8xCswItyWJ9QonlEkS_JasBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537229414839-j9ueu8c63bu5pp2l3bd5tg3gcc9d3ogp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
