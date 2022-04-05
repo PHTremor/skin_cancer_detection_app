@@ -125,16 +125,17 @@ class _TensorFlowScreenState extends State<TensorFlowScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Text(
+              "Upload an Image from the Camera or Gallery",
+              style: TextStyle(fontSize: 15),
+            ),
             Flexible(
               child: AspectRatio(
                 aspectRatio: 1 / 1,
                 child: SvgPicture.asset("assets/images/empty_image.svg"),
               ),
             ),
-            const Text(
-              "Upload an Image from the Camera or Gallery",
-              style: TextStyle(fontSize: 15),
-            ),
+            const SizedBox(height: 20),
             addPhotoButtons()
           ],
         ),
@@ -144,16 +145,18 @@ class _TensorFlowScreenState extends State<TensorFlowScreen> {
 
   Widget addPhotoButtons() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           width: 60.0,
+          height: 40.0,
           child: ElevatedButton(
               onPressed: pickCameraImage,
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   minimumSize: const Size(88, 36),
                   primary: Colors.white,
+                  side: const BorderSide(color: Colors.black),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(2.0)))),
               child: Row(
@@ -163,12 +166,14 @@ class _TensorFlowScreenState extends State<TensorFlowScreen> {
         const SizedBox(width: 10.0),
         SizedBox(
           width: 60.0,
+          height: 40.0,
           child: ElevatedButton(
               onPressed: pickGalleryImage,
               style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   minimumSize: const Size(88, 36),
                   primary: Colors.white,
+                  side: const BorderSide(color: Colors.black),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(2.0)))),
               child: Row(
