@@ -8,6 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   double height;
+
   String title;
 
   CustomAppBar({
